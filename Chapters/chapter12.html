@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chapter 12</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
+
+</head>
+
+<body>
+  <!-- <div id="output"></div>
+    <div id="output1"></div>
+    <div id="output2"></div> -->
+
+
+  <nav class="navbar navbar-expand-lg  navbar-light bg-warning" style="background-color: #fca414; ">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="../index.html">BhagavadGeeks</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="../index.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" href="../index_chapters.html">Chapters</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" href="contact.html">Contact</a>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <div class="center">
+    <span>Select verse: </span>
+    <select id="language" onChange="update()">
+      <option value="1">verse-1</option>
+      <option value="2">verse-2</option>
+      <option value="3">verse-3</option>
+      <option value="4">verse-4</option>
+      <option value="5">verse-5</option>
+      <option value="6">verse-6</option>
+      <option value="7">verse-7</option>
+      <option value="8">verse-8</option>
+      <option value="9">verse-9</option>
+      <option value="10">verse-10</option>
+      <option value="11">verse-11</option>
+      <option value="12">verse-12</option>
+      <option value="13">verse-13</option>
+      <option value="14">verse-14</option>
+      <option value="15">verse-15</option>
+      <option value="16">verse-16</option>
+      <option value="17">verse-17</option>
+      <option value="18">verse-18</option>
+      <option value="19">verse-19</option>
+      <option value="20">verse-20</option>
+    </select>
+    <!-- <input type="text" id="value"> -->
+    <h2 id="output">
+      </h3>
+      <h3> मूल श्लोकः</h3>
+      <div id="output1"></div><br>
+      <h4> transliteration</h4>
+      <div id="output2"></div><br>
+      <h4> word meanings</h4>
+      <div id="output3"></div><br>
+      <h4> translation</h4>
+      <div id="output4"></div><br>
+
+
+      <form action="../index_chapters.html">
+        <button type="submit" class="center1">Back </button>
+      </form>
+  </div>
+
+  <script type="text/javascript">
+    function update() {
+      var select = document.getElementById('language');
+      var option = select.options[select.selectedIndex];
+
+      // document.getElementById('value').value = option.value;
+      const options = {
+        method: 'GET',
+        headers: {
+          'X-RapidAPI-Key': '63a92f2f84msh114d63227e1025dp100b56jsnff864f40b6e8',
+          'X-RapidAPI-Host': 'bhagavad-gita3.p.rapidapi.com'
+        }
+      };
+
+      num = 1;
+
+      fetch(`https://bhagavad-gita3.p.rapidapi.com/v2/chapters/12/verses/${option.value}/`, options)
+        .then(response => response.json())
+        .then(data => {
+          let output = '';
+          output += ` ${data.slug}`;
+          document.getElementById('output').innerHTML = output;
+          let output1 = '';
+          output1 += ` ${data.text}`;
+          document.getElementById('output1').innerHTML = output1;
+          let output2 = '';
+          output2 += ` ${data.transliteration}`;
+          document.getElementById('output2').innerHTML = output2;
+          ;
+          let output3 = '';
+          output3 += ` ${data.word_meanings}`;
+          document.getElementById('output3').innerHTML = output3;
+          let output4 = '';
+          output4 += ` ${(data.translations[1]).description}`;
+          document.getElementById('output4').innerHTML = output4;
+        })
+        .catch(err => console.error(err));
+
+    }
+
+    update();
+  </script>
+
+
+
+
+
+</body>
+
+</html>

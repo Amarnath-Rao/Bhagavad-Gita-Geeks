@@ -1,0 +1,70 @@
+
+form {
+  display: inline;
+}
+  
+  button {
+    height: 50px;
+    width: 150px;
+    font-size: 100%;
+    
+    background-color:#ffc107;
+    border: none;
+  }
+  .center {
+    position: absolute;
+    left: 50%;
+    top: 75%;
+    transform: translate(-50%, -50%);
+    color: black;
+  }
+  
+  .link-class {
+    color: inherit;
+    text-decoration: initial;
+  }
+  .button-container {
+
+    padding-left: 30%;
+    padding-right: 30%;
+    padding-top: 7%;
+    
+  }
+  
+  .chapter-button {
+    margin: 5px 10px; /* add some space between the buttons */
+  }
+  @media (max-width: 668px) {
+    .button-container {
+      
+      padding-left: 26%;
+      padding-right: 20%;
+      padding-top: 0%;
+    }
+    
+  }
+  body {
+    background-image: linear-gradient(rgba(255, 255, 255, 0.75),rgba(255, 255, 255, 0.75)),url(./Chapters/background.jpg);
+    
+    background-size: cover;
+  }
+
+
+<!--kowshik-->
+
+.po{
+  background-image:url(Best-Bhagavad-Gita-Slokas-in-Sanskrit-11.jpg);
+ 
+}
+
+.le{
+text-decoration-color: black;
+  font-family: Times 'Times New Roman', Times, serif;
+  padding : 20px 20px 20px 20px;
+}
+
+   @media (max-width: 1000px) {
+    body {
+      background-image: none;
+    }
+  }
